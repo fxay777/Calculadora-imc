@@ -10,21 +10,22 @@ function App() {
   const calcularIMC = (event) => {
     event.preventDefault();
     if (altura && peso) {
-      const alturaMetros = altura / 100;
-      const imcCalculado = (peso / (alturaMetros * alturaMetros)).toFixed(2);
+      const alturaMetros = parseFloat(altura) / 100;
+      const imcCalculado = (parseFloat(peso) / (alturaMetros * alturaMetros)).toFixed(2);
       setImc(imcCalculado);
       classificarIMC(imcCalculado);
     }
   };
 
   const classificarIMC = (imc) => {
-    if (imc < 18.5) {
+    const imcNum = parseFloat(imc);
+    if (imcNum < 18.5) {
       setClassificacao('Abaixo do peso');
-    } else if (imc >= 18.5 && imc <= 24.9) {
+    } else if (imcNum >= 18.5 && imcNum <= 24.9) {
       setClassificacao('Peso normal');
-    } else if (imc >= 25 && imc <= 29.9) {
+    } else if (imcNum >= 25 && imcNum <= 29.9) {
       setClassificacao('Sobrepeso');
-    } else if (imc >= 30) {
+    } else if (imcNum >= 30) {
       setClassificacao('Obesidade');
     }
   };
